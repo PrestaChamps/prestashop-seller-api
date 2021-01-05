@@ -1,0 +1,25 @@
+{
+  "name": "prestachamps/prestashop-sellers-api",
+  "description": "Prestashop sellers API Client",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zoltan Szanto",
+      "email": "zoli@prestachamps.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PrestaChamps\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2.0",
+    "guzzlehttp/guzzle": "~6.0",
+    "guzzlehttp/guzzle-services": "^1.1",
+    "gimler/guzzle-description-loader": "^0.0.4",
+    "ext-json": "*",
+    "emarref/guzzle-param-middleware": "^1.0"
+  }
+}

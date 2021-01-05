@@ -1,0 +1,118 @@
+{
+  "baseUri": "https://api.addons.prestashop.com/",
+  "operations": {
+    "getThreads": {
+      "httpMethod": "GET",
+      "uri": "/request/seller/threads",
+      "responseModel": "getThreads",
+      "parameters": {
+        "sort": {
+          "location": "query",
+          "type": "string",
+          "required": false
+        },
+        "limit": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        },
+        "page": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        }
+      }
+    },
+    "getThreadMessages": {
+      "httpMethod": "GET",
+      "uri": "/request/seller/threads/{threadId}/messages",
+      "responseModel": "getThreadMessages",
+      "parameters": {
+        "threadId": {
+          "location": "uri",
+          "type": "integer",
+          "required": true
+        },
+        "seen": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        },
+        "sort": {
+          "location": "query",
+          "type": "string",
+          "required": false
+        },
+        "limit": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        },
+        "page": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        }
+      }
+    },
+    "getMessages": {
+      "httpMethod": "GET",
+      "uri": "/request/seller/messages",
+      "responseModel": "getThreadMessages",
+      "parameters": {
+        "seen": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        },
+        "sort": {
+          "location": "query",
+          "type": "string",
+          "required": false
+        },
+        "limit": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        },
+        "page": {
+          "location": "query",
+          "type": "integer",
+          "required": false
+        }
+      }
+    },
+    "getThread": {
+      "httpMethod": "GET",
+      "uri": "/request/seller/thread/{idThread}",
+      "responseModel": "getThread",
+      "parameters": {
+        "idThread": {
+          "location": "uri",
+          "type": "integer",
+          "required": true
+        }
+      }
+    }
+  },
+  "models": {
+    "getThread": {
+      "type": "object",
+      "additionalProperties": {
+        "location": "json"
+      }
+    },
+    "getThreads": {
+      "type": "object",
+      "additionalProperties": {
+        "location": "json"
+      }
+    },
+    "getThreadMessages": {
+      "type": "object",
+      "additionalProperties": {
+        "location": "json"
+      }
+    }
+  }
+}
