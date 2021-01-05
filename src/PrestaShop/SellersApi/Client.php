@@ -7,8 +7,15 @@
 
 namespace PrestaChamps\PrestaShop\SellersApi;
 
+use Monolog\Logger;
+use GuzzleHttp\Psr7\Uri;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Command\Result;
+use GuzzleHttp\MessageFormatter;
+use Monolog\Handler\StreamHandler;
+use GuzzleHttp\Handler\CurlHandler;
+use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 
@@ -34,18 +41,26 @@ class Client
      */
     public $guzzleClient;
 
+    protected $apiKey;
+
     public function __construct(string $apiKey)
     {
-        $this->initClient($apiKey);
+        $this->apiKey = $apiKey;
+        $this->initClient();
     }
 
-    protected function initClient(string $apiKey)
+    protected function initClient()
     {
         $stack = HandlerStack::create();
 
+        $stack->setHandler(new CurlHandler());
+
+        $stack->unshift(Middleware::mapRequest(function(RequestInterface $request) {
+            return $request->withUri(Uri::withQueryValue($request->getUri(), 'api_key', $this->apiKey));
+        }));
+
         $this->client = new \GuzzleHttp\Client([
             'base_uri' => 'https://api.addons.prestashop.com/',
-            'query' => ['api_key' => $apiKey],
             'handler' => $stack,
         ]);
 
