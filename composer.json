@@ -16,10 +16,8 @@
   },
   "require": {
     "php": ">=7.2.0",
-    "guzzlehttp/guzzle": "~6.0",
-    "guzzlehttp/guzzle-services": "^1.1",
-    "gimler/guzzle-description-loader": "^0.0.4",
     "ext-json": "*",
-    "emarref/guzzle-param-middleware": "^1.0"
+    "guzzlehttp/guzzle": "~6.0",
+    "guzzlehttp/guzzle-services": "^1.1"
   }
 }

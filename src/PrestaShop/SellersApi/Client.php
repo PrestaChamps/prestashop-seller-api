@@ -7,9 +7,8 @@
 
 namespace PrestaChamps\PrestaShop\SellersApi;
 
-use GuzzleHttp\Command\Result;
 use GuzzleHttp\HandlerStack;
-use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Command\Result;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 
